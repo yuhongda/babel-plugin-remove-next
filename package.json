@@ -1,0 +1,24 @@
+{
+  "name": "removable-mock-workspace",
+  "workspaces": [
+    "packages/*"
+  ],
+  "description": "",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+		"build": "lerna run build",
+    "test": "yarn run jest:clear && jest --config=jest.config.js",
+    "jest:clear": "jest --clearCache",
+    "cover": "yarn run jest:clear && jest --coverage --config=jest.config.js",
+    "ci": "yarn run build && yarn run cover && codecov",
+    "release": "lerna publish",
+    "release:next": "lerna publish --dist-tag next"
+  },
+  "repository": "https://github.com/yuhongda/babel-plugin-removable-mock.git",
+  "author": "yuhongda silverage.y@gmail.com",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  },
+  "license": "MIT"
+}
