@@ -32,7 +32,18 @@ var _default = function _default() {
             },
             CallExpression: {
               enter: function enter(path) {
-                var callee = path.node.callee;
+                if ((0, _utils.isMock)(path.node)) {
+                  path.node.leadingComments = null;
+                  path.remove();
+                }
+              }
+            },
+            JSXExpressionContainer: {
+              enter: function enter(path) {
+                if ((0, _utils.isMock)(path.node)) {
+                  path.getNextSibling().remove();
+                  path.remove();
+                }
               }
             }
           });

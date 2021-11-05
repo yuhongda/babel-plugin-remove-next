@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`general CallExpression transform: 
+import { readFileSync } from "fs";
+import { round } from "mathjs";
+export const makeRound = v => {
+  round(1.22, 2);
+
+  return round(v);
+}; 1`] = `
+"import { round } from 'mathjs';
+export const makeRound = (v) => {
+  // babel-plugin-removable-mocks
+  round(1.22, 2);
+  round(1.22, 2);
+
+  return round(v);
+};
+"
+`;
+
 exports[`general FunctionDeclaration transform: 
 import { readFileSync } from "fs";
 import { round } from "mathjs";
@@ -17,24 +36,31 @@ export const makeRound = (v) => {
 "
 `;
 
-exports[`general VariableDeclaration transform: 
-import { readFileSync } from "fs";
-import { round } from "mathjs";
-export const makeRound = v => {
-  round(1.22, 2);
+exports[`general JSX transform: 
+import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
 
-  return round(v);
-}; 1`] = `
-"import { round } from 'mathjs';
-export const makeRound = (v) => {
-  round(1.22, 2);
+const SFC_Inner_MyComponent = observer((props) => {
+  const [counter, setCounter] = useState(0);
 
-  return round(v);
-};
+  return <div style={props.styles.blue}></div>;
+}); 1`] = `
+"import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+
+const SFC_Inner_MyComponent = observer((props) => {
+  const [counter, setCounter] = useState(0);
+
+  return (
+    <div style={props.styles.blue}>
+      <div>will be removed</div>
+    </div>
+  );
+});
 "
 `;
 
-exports[`normal general transform: 
+exports[`general VariableDeclaration transform: 
 import { readFileSync } from "fs";
 import { round } from "mathjs";
 export const makeRound = v => {

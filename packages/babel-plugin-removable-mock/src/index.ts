@@ -32,6 +32,14 @@ export default () => ({
 							}
 						},
 					},
+          JSXExpressionContainer: {
+            enter(path) {
+              if (isMock(path.node)) {
+                path.getNextSibling().remove();
+								path.remove();
+							}
+            },
+          },
 				});
 			},
 			exit(path: NodePath<t.Node>, state: any) {},

@@ -2,7 +2,7 @@ import { transformSync } from "@babel/core";
 import { format } from "prettier";
 import presetTypescript from "@babel/preset-typescript";
 import babelPluginRemovableMock from "../src/index";
-import { resultTransformSnapshot } from "./snapshot/transform.snapshot";
+import { resultTransformSnapshot, resultJSXTransformSnapshot } from "./snapshot/transform.snapshot";
 
 export function transform(code: string) {
 	const result = transformSync(code, {
@@ -56,9 +56,39 @@ export const makeRound = v => {
 };
 `;
 
+const callExpressionCase = `
+import { readFileSync } from "fs";
+import { round } from "mathjs";
+export const makeRound = v => {
+  // babel-plugin-removable-mocks
+	round(1.22, 2);
+  round(1.22, 2);
+
+  return round(v);
+};
+`;
+
+const jsxCase = `
+import React, { useState } from 'react';
+import { observer } from 'mobx-react-lite';
+
+const SFC_Inner_MyComponent = observer((props) => {
+  const [counter, setCounter] = useState(0);
+
+  return <div style={props.styles.blue}>
+    
+   	{/* babel-plugin-removable-mocks */}
+    <div>will be removed</div>
+  
+  </div>;
+});
+`;
+
 describe("general", function () {
 	const variableDeclarationTransform = transform(variableDeclarationCase);
 	const functionDeclarationTransform = transform(functionDeclarationCase);
+	const callExpressionCaseTransform = transform(callExpressionCase);
+	const jsxCaseTransform = transform(jsxCase);
 
 	it("VariableDeclaration transform", () => {
 		expect(variableDeclarationTransform).toMatchSnapshot(
@@ -69,6 +99,18 @@ describe("general", function () {
 	it("FunctionDeclaration transform", () => {
 		expect(functionDeclarationTransform).toMatchSnapshot(
 			resultTransformSnapshot
+		);
+	});
+
+	it("CallExpression transform", () => {
+		expect(callExpressionCaseTransform).toMatchSnapshot(
+			resultTransformSnapshot
+		);
+	});
+
+	it("JSX transform", () => {
+		expect(jsxCaseTransform).toMatchSnapshot(
+			resultJSXTransformSnapshot
 		);
 	});
 });
