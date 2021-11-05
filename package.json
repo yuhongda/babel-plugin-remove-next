@@ -18,7 +18,19 @@
   "repository": "https://github.com/yuhongda/babel-plugin-removable-mock.git",
   "author": "yuhongda silverage.y@gmail.com",
   "devDependencies": {
-    "lerna": "^4.0.0"
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/plugin-proposal-decorators": "^7.14.5",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "lerna": "^4.0.0",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "@types/jest": "^26.0.24",
+    "babel-jest": "^27.0.6",
+    "prettier": "^2.3.2",
+    "codecov": "^3.8.3",
+    "enzyme": "^3.11.0",
+    "jest": "^27.0.6",
+    "jest-css-modules-transform": "^4.3.0",
+    "jest-enzyme": "^7.1.2"
   },
   "license": "MIT"
 }
