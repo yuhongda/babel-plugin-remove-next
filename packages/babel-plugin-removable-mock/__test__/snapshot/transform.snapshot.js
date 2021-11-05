@@ -1,4 +1,4 @@
-export const variableDeclarationTransformSnapshot = `
+export const resultTransformSnapshot = `
 import { readFileSync } from "fs";
 import { round } from "mathjs";
 export const makeRound = v => {
@@ -6,4 +6,5 @@ export const makeRound = v => {
 
   return round(v);
 };`
+
 

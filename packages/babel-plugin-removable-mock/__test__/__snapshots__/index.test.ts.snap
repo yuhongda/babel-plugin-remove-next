@@ -1,5 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`general FunctionDeclaration transform: 
+import { readFileSync } from "fs";
+import { round } from "mathjs";
+export const makeRound = v => {
+  round(1.22, 2);
+
+  return round(v);
+}; 1`] = `
+"import { round } from 'mathjs';
+export const makeRound = (v) => {
+  round(1.22, 2);
+
+  return round(v);
+};
+"
+`;
+
+exports[`general VariableDeclaration transform: 
+import { readFileSync } from "fs";
+import { round } from "mathjs";
+export const makeRound = v => {
+  round(1.22, 2);
+
+  return round(v);
+}; 1`] = `
+"import { round } from 'mathjs';
+export const makeRound = (v) => {
+  round(1.22, 2);
+
+  return round(v);
+};
+"
+`;
+
 exports[`normal general transform: 
 import { readFileSync } from "fs";
 import { round } from "mathjs";

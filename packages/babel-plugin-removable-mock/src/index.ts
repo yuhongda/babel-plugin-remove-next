@@ -26,7 +26,10 @@ export default () => ({
 					},
 					CallExpression: {
 						enter(path) {
-							const { callee } = path.node;
+							if (isMock(path.node)) {
+								path.node.leadingComments = null;
+								path.remove();
+							}
 						},
 					},
 				});

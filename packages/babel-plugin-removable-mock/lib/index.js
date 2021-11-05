@@ -5,22 +5,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
+var _utils = require("./utils");
+
 var _default = function _default() {
   return {
-    name: 'babel-plugin-removable-mock',
+    name: "babel-plugin-removable-mock",
     visitor: {
       Program: {
         enter: function enter(path, state) {
           path.traverse({
             VariableDeclaration: {
               enter: function enter(path) {
-                var leadingComments = path.node.leadingComments;
-                console.log(path.node);
-                var foundIt = leadingComments === null || leadingComments === void 0 ? void 0 : leadingComments.find(function (comment) {
-                  return comment.value.includes('babel-plugin-removable-mocks');
-                });
-
-                if (foundIt) {
+                if ((0, _utils.isMock)(path.node)) {
+                  path.node.leadingComments = null;
+                  path.remove();
+                }
+              }
+            },
+            FunctionDeclaration: {
+              enter: function enter(path) {
+                if ((0, _utils.isMock)(path.node)) {
                   path.node.leadingComments = null;
                   path.remove();
                 }
