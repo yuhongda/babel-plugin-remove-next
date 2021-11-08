@@ -9,7 +9,7 @@ var _utils = require("./utils");
 
 var _default = function _default() {
   return {
-    name: "babel-plugin-removable-mock",
+    name: "babel-plugin-remove-next",
     visitor: {
       Program: {
         enter: function enter(path, state) {

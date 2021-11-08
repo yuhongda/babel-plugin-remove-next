@@ -3,7 +3,7 @@ import { NodePath } from "@babel/core";
 import { isMock } from "./utils";
 
 export default () => ({
-	name: "babel-plugin-removable-mock",
+	name: "babel-plugin-remove-next",
 	visitor: {
 		Program: {
 			enter(path: NodePath<t.Node>, state: any) {

@@ -1,5 +1,5 @@
 {
-  "name": "babel-plugin-removable-mock",
+  "name": "babel-plugin-remove-next",
   "version": "1.0.0",
   "main": "lib/index.js",
   "files": [
@@ -14,7 +14,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yuhongda/babel-plugin-removable-mock.git"
+    "url": "https://github.com/yuhongda/babel-plugin-remove-next.git"
   },
   "author": "yuhongda silverage.y@gmail.com",
   "license": "MIT",

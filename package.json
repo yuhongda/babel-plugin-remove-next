@@ -15,7 +15,7 @@
     "release": "lerna publish",
     "release:next": "lerna publish --dist-tag next"
   },
-  "repository": "https://github.com/yuhongda/babel-plugin-removable-mock.git",
+  "repository": "https://github.com/yuhongda/babel-plugin-remove-next.git",
   "author": "yuhongda silverage.y@gmail.com",
   "devDependencies": {
     "@babel/plugin-proposal-class-properties": "^7.14.5",

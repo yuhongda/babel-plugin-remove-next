@@ -8,7 +8,7 @@ export const isMock = (node: t.Node) => {
 				node.expression.innerComments.length > 0
 			) {
 				const foundIt = node.expression.innerComments.find((comment) =>
-					comment.value.includes("babel-plugin-removable-mocks")
+					comment.value.includes("babel-plugin-remove-next")
 				);
 				return foundIt;
 			}
@@ -18,7 +18,7 @@ export const isMock = (node: t.Node) => {
 	} else {
 		const { leadingComments } = node;
 		const foundIt = leadingComments?.find((comment) =>
-			comment.value.includes("babel-plugin-removable-mocks")
+			comment.value.includes("babel-plugin-remove-next")
 		);
 		return foundIt;
 	}

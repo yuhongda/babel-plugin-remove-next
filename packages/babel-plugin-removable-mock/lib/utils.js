@@ -18,7 +18,7 @@ var isMock = function isMock(node) {
     if (t.isJSXEmptyExpression(node.expression)) {
       if (node.expression.innerComments && node.expression.innerComments.length > 0) {
         var foundIt = node.expression.innerComments.find(function (comment) {
-          return comment.value.includes("babel-plugin-removable-mocks");
+          return comment.value.includes("babel-plugin-remove-next");
         });
         return foundIt;
       }
@@ -29,7 +29,7 @@ var isMock = function isMock(node) {
     var leadingComments = node.leadingComments;
 
     var _foundIt = leadingComments === null || leadingComments === void 0 ? void 0 : leadingComments.find(function (comment) {
-      return comment.value.includes("babel-plugin-removable-mocks");
+      return comment.value.includes("babel-plugin-remove-next");
     });
 
     return _foundIt;

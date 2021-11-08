@@ -1,1 +1,1 @@
-# babel-plugin-removable-mock
+# babel-plugin-remove-next

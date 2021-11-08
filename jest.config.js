@@ -1,6 +1,6 @@
 module.exports = {
-  collectCoverageFrom: ['<rootDir>/packages/babel-plugin-removable-mock/src/**/*.{js,jsx,ts,tsx}'],
-  testMatch: ['<rootDir>/packages/babel-plugin-removable-mock/**/__test__/**/*.(spec|test).{js,jsx,ts,tsx}'],
+  collectCoverageFrom: ['<rootDir>/packages/babel-plugin-remove-next/src/**/*.{js,jsx,ts,tsx}'],
+  testMatch: ['<rootDir>/packages/babel-plugin-remove-next/**/__test__/**/*.(spec|test).{js,jsx,ts,tsx}'],
   // testEnvironment: 'enzyme',
   // setupFiles: ['<rootDir>/__test__/setup.js'],
   // setupFilesAfterEnv: ['<rootDir>/node_modules/jest-enzyme/lib/index.js'],

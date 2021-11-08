@@ -31,7 +31,7 @@ const variableDeclarationCase = `
 import { readFileSync } from "fs";
 import { round } from "mathjs";
 export const makeRound = v => {
-  // babel-plugin-removable-mocks
+  // babel-plugin-remove-next
   const mocks = {
     d1: '11',
     v1: '11'
@@ -46,7 +46,7 @@ const functionDeclarationCase = `
 import { readFileSync } from "fs";
 import { round } from "mathjs";
 export const makeRound = v => {
-  // babel-plugin-removable-mocks
+  // babel-plugin-remove-next
   function mocksFunc() {
 		round(1.22, 2);
 	};
@@ -60,7 +60,7 @@ const callExpressionCase = `
 import { readFileSync } from "fs";
 import { round } from "mathjs";
 export const makeRound = v => {
-  // babel-plugin-removable-mocks
+  // babel-plugin-remove-next
 	round(1.22, 2);
   round(1.22, 2);
 
@@ -77,7 +77,7 @@ const SFC_Inner_MyComponent = observer((props) => {
 
   return <div style={props.styles.blue}>
     
-   	{/* babel-plugin-removable-mocks */}
+   	{/* babel-plugin-remove-next */}
     <div>will be removed</div>
   
   </div>;
