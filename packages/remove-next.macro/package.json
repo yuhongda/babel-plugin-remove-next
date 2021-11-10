@@ -1,0 +1,46 @@
+{
+  "name": "remove-next.macro",
+  "version": "1.0.0",
+  "description": "Babel macro for babel-plugin-remove-next",
+  "main": "lib/index.js",
+  "files": [
+    "lib/",
+    "index.d.ts",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "lib": "babel src --out-dir lib --extensions \".js,.jsx,.ts,.tsx\" --config-file \"../../.babelrc\"",
+    "dts": "rollup -c -o index.d.ts",
+    "build": "yarn run lib && yarn run dts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yuhongda/babel-plugin-remove-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yuhongda/babel-plugin-remove-next/issues"
+  },
+  "author": "yuhongda <silverage.y@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "babel-plugin-remove-next": "^1.0.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
+    "@babel/preset-env": "^7.14.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.14.5",
+    "@babel/types": "^7.14.8",
+    "@types/babel-plugin-macros": "^2.8.5",
+    "babel-plugin-macros": "^3.1.0",
+    "babel-plugin-tester": "^10.1.0",
+    "rollup": "^2.56.3",
+    "rollup-plugin-dts": "^4.0.0",
+    "typescript": "^4.4.4"
+  },
+  "peerDependencies": {
+    "babel-plugin-macros": "*"
+  }
+}

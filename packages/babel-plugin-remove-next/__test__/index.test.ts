@@ -2,7 +2,7 @@ import { transformSync } from "@babel/core";
 import { format } from "prettier";
 import presetTypescript from "@babel/preset-typescript";
 import babelPluginRemovableMock from "../src/index";
-import { resultTransformSnapshot, resultJSXTransformSnapshot } from "./snapshot/transform.snapshot";
+import { resultTransformSnapshot, resultJSXTransformSnapshot } from "./snapshot/transform.snapshot.js";
 
 export function transform(code: string) {
 	const result = transformSync(code, {
