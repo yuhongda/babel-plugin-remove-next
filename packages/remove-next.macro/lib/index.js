@@ -30,16 +30,24 @@ var _default = (0, _babelPluginMacros.createMacro)(function (_ref) {
     // references.removeNext[0].replaceWith(babel.types.);
     references.removeNext.forEach(function (path) {
       // const nextNode = path.getNextSibling();
-      var removeNext = path.findParent(function (p) {
-        return p.isExpression();
-      });
+      var block = path.findParent(function (p) {
+        return p.isBlockStatement();
+      }); // if (removeNext) {
+      // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
 
-      if (removeNext) {
-        var nextPath = removeNext.getNextSibling();
-        babel.types.addComment(path.getNextSibling().node, "leading", "babel-plugin-remove-next", true);
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>>", nextPath);
-      } // path.remove();
-
+      console.log(">>>>>>>>>>>>>>>>>>>>>>>>", block === null || block === void 0 ? void 0 : block.node);
+      babel.types.addComment(path.node, "leading", "babel-plugin-remove-next", true); // if (nextPath) {
+      // 	babel.types.addComment(
+      // 		nextPath.node,
+      // 		"leading",
+      // 		"babel-plugin-remove-next",
+      // 		true
+      // 	);
+      // }
+      // removeNext.remove();
+      // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
+      // }
+      // path.remove();
     });
   }
 

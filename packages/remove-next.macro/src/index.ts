@@ -16,18 +16,27 @@ export default createMacro(
 
 			references.removeNext.forEach((path) => {
 				// const nextNode = path.getNextSibling();
-				const removeNext = path.findParent((p) => p.isExpression());
-				if (removeNext) {
-					const nextPath = removeNext.getNextSibling();
-
-					babel.types.addComment(
-						path.node,
-						"leading",
-						"babel-plugin-remove-next",
-            true
-					);
-					console.log(">>>>>>>>>>>>>>>>>>>>>>>>", nextPath);
-				}
+				const block = path.findParent((p) => p.isBlockStatement());
+				// if (removeNext) {
+// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>", block?.get('body')[0].node);
+				babel.types.addComment(
+					path.node,
+					"leading",
+					"babel-plugin-remove-next",
+					true
+				);
+				// if (nextPath) {
+				// 	babel.types.addComment(
+				// 		nextPath.node,
+				// 		"leading",
+				// 		"babel-plugin-remove-next",
+				// 		true
+				// 	);
+				// }
+				// removeNext.remove();
+				// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
+				// }
 
 				// path.remove();
 			});
