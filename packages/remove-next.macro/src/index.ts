@@ -18,14 +18,27 @@ export default createMacro(
 				// const nextNode = path.getNextSibling();
 				const block = path.findParent((p) => p.isBlockStatement());
 				// if (removeNext) {
-// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
-console.log(">>>>>>>>>>>>>>>>>>>>>>>>", block?.get('body')[0].node);
+				// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
 				babel.types.addComment(
-					path.node,
+					(block?.get('body') as NodePath[])[2].node,
 					"leading",
 					"babel-plugin-remove-next",
 					true
 				);
+				// babel.types.addComment(
+				// 	(block?.get('body') as NodePath[])[1].node,
+				// 	"leading",
+				// 	"babel-plugin-remove-next",
+				// 	true
+				// );
+				// babel.types.addComments(
+				// 	(block?.get('body') as NodePath[])[1].node,
+				// 	"leading",
+				// 	[{
+				// 		type: "CommentLine",
+				// 		value: "babel-plugin-remove-next",
+				// 	} as babel.types.Comment]
+				// )
 				// if (nextPath) {
 				// 	babel.types.addComment(
 				// 		nextPath.node,

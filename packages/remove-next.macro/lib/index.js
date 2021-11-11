@@ -35,8 +35,21 @@ var _default = (0, _babelPluginMacros.createMacro)(function (_ref) {
       }); // if (removeNext) {
       // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
 
-      console.log(">>>>>>>>>>>>>>>>>>>>>>>>", block === null || block === void 0 ? void 0 : block.node);
-      babel.types.addComment(path.node, "leading", "babel-plugin-remove-next", true); // if (nextPath) {
+      babel.types.addComment((block === null || block === void 0 ? void 0 : block.get('body'))[2].node, "leading", "babel-plugin-remove-next", true); // babel.types.addComment(
+      // 	(block?.get('body') as NodePath[])[1].node,
+      // 	"leading",
+      // 	"babel-plugin-remove-next",
+      // 	true
+      // );
+      // babel.types.addComments(
+      // 	(block?.get('body') as NodePath[])[1].node,
+      // 	"leading",
+      // 	[{
+      // 		type: "CommentLine",
+      // 		value: "babel-plugin-remove-next",
+      // 	} as babel.types.Comment]
+      // )
+      // if (nextPath) {
       // 	babel.types.addComment(
       // 		nextPath.node,
       // 		"leading",

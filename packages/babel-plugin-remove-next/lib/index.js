@@ -14,6 +14,15 @@ var _default = function _default() {
       Program: {
         enter: function enter(path, state) {
           path.traverse({
+            ExpressionStatement: {
+              enter: function enter(path) {
+                if ((0, _utils.isMock)(path.node)) {
+                  console.log('>>>>>>>>>>>>>>>>>>>>>', path.node);
+                  path.node.leadingComments = null;
+                  path.remove();
+                }
+              }
+            },
             VariableDeclaration: {
               enter: function enter(path) {
                 if ((0, _utils.isMock)(path.node)) {
