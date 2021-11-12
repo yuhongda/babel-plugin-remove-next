@@ -1,20 +1,21 @@
 {
-    "name": "vscode-remove-next",
-    "displayName": "vscode-remove-next",
-    "description": "vscode extension for babel-plugin-remove-next",
-    "version": "0.0.1",
-    "engines": {
-        "vscode": "^1.62.0"
-    },
-    "categories": [
-        "Snippets"
-    ],
-    "contributes": {
-        "snippets": [
-            {
-                "language": "javascript",
-                "path": "./snippets/snippets.code-snippets"
-            }
-        ]
-    }
+  "name": "vscode-remove-next",
+  "displayName": "vscode-remove-next",
+  "description": "vscode extension for babel-plugin-remove-next",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  },
+  "repository": "https://github.com/yuhongda/babel-plugin-remove-next.git"
 }
