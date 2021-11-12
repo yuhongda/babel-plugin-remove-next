@@ -8,6 +8,14 @@ export default () => ({
 		Program: {
 			enter(path: NodePath<t.Node>, state: any) {
 				path.traverse({
+					ExpressionStatement: {
+						enter(path) {
+							if (isMock(path.node)) {
+								path.node.leadingComments = null;
+								path.remove();
+							}
+						},
+					},
 					VariableDeclaration: {
 						enter(path) {
 							if (isMock(path.node)) {
@@ -18,11 +26,11 @@ export default () => ({
 					},
 					FunctionDeclaration: {
 						enter(path) {
-              if (isMock(path.node)) {
+							if (isMock(path.node)) {
 								path.node.leadingComments = null;
 								path.remove();
 							}
-            },
+						},
 					},
 					CallExpression: {
 						enter(path) {
@@ -32,17 +40,17 @@ export default () => ({
 							}
 						},
 					},
-          JSXExpressionContainer: {
-            enter(path) {
-              if (isMock(path.node)) {
-                path.getNextSibling().remove();
+					JSXExpressionContainer: {
+						enter(path) {
+							if (isMock(path.node)) {
+								path.getNextSibling().remove();
 								path.remove();
 							}
-            },
-          },
+						},
+					},
 				});
 			},
-			exit(path: NodePath<t.Node>, state: any) {},
+			exit(path: NodePath<t.Node>, state: any) { },
 		},
 	},
 });

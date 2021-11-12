@@ -10,8 +10,6 @@ export const makeRound = v => {
 }; 1`] = `
 "import { round } from 'mathjs';
 export const makeRound = (v) => {
-  // babel-plugin-remove-next
-  round(1.22, 2);
   round(1.22, 2);
 
   return round(v);
