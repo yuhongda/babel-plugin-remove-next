@@ -1,45 +1,22 @@
 {
   "name": "vscode-remove-next",
-	"displayName": "vscode-remove-next",
-	"description": "extension for babel-plugin-remove-next",
-	"version": "0.0.1",
-	"engines": {
-		"vscode": "^1.62.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-        "onCommand:vscode-remove-next.helloWorld"
-	],
-	"main": "./out/extension.js",
-	"contributes": {
-		"commands": [
-			{
-				"command": "vscode-remove-next.helloWorld",
-				"title": "Hello World"
-			}
-		]
-	},
-	"scripts": {
-		"vscode:prepublish": "yarn run compile",
-		"compile": "tsc -p ./",
-		"watch": "tsc -watch -p ./",
-		"pretest": "yarn run compile && yarn run lint",
-		"lint": "eslint src --ext ts",
-		"test": "node ./out/test/runTest.js"
-	},
-	"devDependencies": {
-		"@types/vscode": "^1.62.0",
-		"@types/glob": "^7.1.4",
-		"@types/mocha": "^9.0.0",
-		"@types/node": "14.x",
-		"@typescript-eslint/eslint-plugin": "^5.1.0",
-		"@typescript-eslint/parser": "^5.1.0",
-		"eslint": "^8.1.0",
-		"glob": "^7.1.7",
-		"mocha": "^9.1.3",
-		"typescript": "^4.4.4",
-		"@vscode/test-electron": "^1.6.2"
-	}
+  "publisher": "yuhongda",
+  "displayName": "vscode-remove-next",
+  "description": "vscode extension for babel-plugin-remove-next",
+  "version": "1.0.1-alpha.0",
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "javascript",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  },
+  "repository": "https://github.com/yuhongda/babel-plugin-remove-next.git"
 }

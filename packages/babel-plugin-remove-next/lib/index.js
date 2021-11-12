@@ -17,7 +17,6 @@ var _default = function _default() {
             ExpressionStatement: {
               enter: function enter(path) {
                 if ((0, _utils.isMock)(path.node)) {
-                  console.log('>>>>>>>>>>>>>>>>>>>>>', path.node);
                   path.node.leadingComments = null;
                   path.remove();
                 }
@@ -50,7 +49,10 @@ var _default = function _default() {
             JSXExpressionContainer: {
               enter: function enter(path) {
                 if ((0, _utils.isMock)(path.node)) {
-                  path.getNextSibling().remove();
+                  var nextPath = path.getAllNextSiblings().find(function (p) {
+                    return p && !p.isJSXText();
+                  });
+                  nextPath && nextPath.remove();
                   path.remove();
                 }
               }

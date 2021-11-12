@@ -11,51 +11,41 @@ export default createMacro(
 		const program = state.file.path;
 
 		if (references.removeNext) {
-			// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", references.removeNext);
-			// references.removeNext[0].replaceWith(babel.types.);
-
 			references.removeNext.forEach((path) => {
-				// const nextNode = path.getNextSibling();
-				const block = path.findParent((p) => p.isBlockStatement());
-				// if (removeNext) {
-				// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
-				babel.types.addComment(
-					(block?.get('body') as NodePath[])[2].node,
-					"leading",
-					"babel-plugin-remove-next",
-					true
-				);
-				// babel.types.addComment(
-				// 	(block?.get('body') as NodePath[])[1].node,
-				// 	"leading",
-				// 	"babel-plugin-remove-next",
-				// 	true
-				// );
-				// babel.types.addComments(
-				// 	(block?.get('body') as NodePath[])[1].node,
-				// 	"leading",
-				// 	[{
-				// 		type: "CommentLine",
-				// 		value: "babel-plugin-remove-next",
-				// 	} as babel.types.Comment]
-				// )
-				// if (nextPath) {
-				// 	babel.types.addComment(
-				// 		nextPath.node,
-				// 		"leading",
-				// 		"babel-plugin-remove-next",
-				// 		true
-				// 	);
-				// }
-				// removeNext.remove();
-				// console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
-				// }
-
-				// path.remove();
+				const expression = path.findParent((p) => p.isExpressionStatement());
+				if (expression) {
+					if (expression.getNextSibling()) {
+						babel.types.addComment(
+							expression.getNextSibling().node,
+							"leading",
+							"babel-plugin-remove-next",
+							true
+						);
+					}
+					expression.remove();
+				}
 			});
 		}
 
-		traverse(program.parent, babelPluginRemoveNext().visitor, undefined, {});
+		if (references.removeNextJSX) {
+			references.removeNextJSX.forEach((path) => {
+				const expression = path.findParent((p) => p.isCallExpression());
+				if (expression) {
+					const empty = babel.types.jsxEmptyExpression();
+					babel.types.addComment(
+						empty,
+						"inner",
+						"babel-plugin-remove-next",
+						false
+					);
+					expression.replaceWith(empty);
+				}
+			});
+		}
+
+		if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test") {
+			traverse(program.parent, babelPluginRemoveNext().visitor, undefined, {});
+		}
 	},
 	{
 		configName: "removeNext",
@@ -63,3 +53,4 @@ export default createMacro(
 );
 
 export declare function removeNext(): void;
+export declare function removeNextJSX(): void;

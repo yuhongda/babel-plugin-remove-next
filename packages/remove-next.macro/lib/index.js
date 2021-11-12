@@ -26,43 +26,35 @@ var _default = (0, _babelPluginMacros.createMacro)(function (_ref) {
   var program = state.file.path;
 
   if (references.removeNext) {
-    // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", references.removeNext);
-    // references.removeNext[0].replaceWith(babel.types.);
     references.removeNext.forEach(function (path) {
-      // const nextNode = path.getNextSibling();
-      var block = path.findParent(function (p) {
-        return p.isBlockStatement();
-      }); // if (removeNext) {
-      // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
+      var expression = path.findParent(function (p) {
+        return p.isExpressionStatement();
+      });
 
-      babel.types.addComment((block === null || block === void 0 ? void 0 : block.get('body'))[2].node, "leading", "babel-plugin-remove-next", true); // babel.types.addComment(
-      // 	(block?.get('body') as NodePath[])[1].node,
-      // 	"leading",
-      // 	"babel-plugin-remove-next",
-      // 	true
-      // );
-      // babel.types.addComments(
-      // 	(block?.get('body') as NodePath[])[1].node,
-      // 	"leading",
-      // 	[{
-      // 		type: "CommentLine",
-      // 		value: "babel-plugin-remove-next",
-      // 	} as babel.types.Comment]
-      // )
-      // if (nextPath) {
-      // 	babel.types.addComment(
-      // 		nextPath.node,
-      // 		"leading",
-      // 		"babel-plugin-remove-next",
-      // 		true
-      // 	);
-      // }
-      // removeNext.remove();
-      // console.log(">>>>>>>>>>>>>>>>>>>>>>>>", path);
-      // }
-      // path.remove();
+      if (expression) {
+        if (expression.getNextSibling()) {
+          babel.types.addComment(expression.getNextSibling().node, "leading", "babel-plugin-remove-next", true);
+        }
+
+        expression.remove();
+      }
     });
-  }
+  } // if(references.removeNextJSX) {
+  //   references.removeNextJSX.forEach((path) => {
+  // 		const expression = path.findParent((p) => p.isCallExpression());
+  //     if(expression) {
+  //       const empty = babel.types.jsxEmptyExpression();
+  //       babel.types.addComment(
+  //         empty,
+  //         "inner",
+  //         "babel-plugin-remove-next",
+  //         false
+  //       );
+  //       expression.replaceWith(empty);
+  //     }
+  //   });
+  // }
+
 
   (0, _traverse["default"])(program.parent, (0, _babelPluginRemoveNext["default"])().visitor, undefined, {});
 }, {

@@ -1,6 +1,6 @@
 {
   "name": "remove-next.macro",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.0",
   "description": "Babel macro for babel-plugin-remove-next",
   "main": "lib/index.js",
   "files": [
@@ -24,7 +24,7 @@
   "author": "yuhongda <silverage.y@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-plugin-remove-next": "^1.0.0"
+    "babel-plugin-remove-next": "^1.0.1-alpha.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.14.8",

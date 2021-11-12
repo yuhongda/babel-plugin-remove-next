@@ -1,0 +1,30 @@
+{
+  "Remove Next": {
+		"prefix": "remove-next",
+		"body": [
+			"// babel-plugin-remove-next"
+		],
+		"description": "babel-plugin-remove-next"
+	},
+  "Remove Next(macro)": {
+		"prefix": "remove-next.macro",
+		"body": [
+			"removeNext();"
+		],
+		"description": "remove-next.macro"
+	},
+  "Remove Next JSX": {
+		"prefix": "remove-next-jsx",
+		"body": [
+			"{/* babel-plugin-remove-next */}"
+		],
+		"description": "babel-plugin-remove-next (jsx)"
+	},
+  "Remove Next(macro) JSX": {
+		"prefix": "remove-next-jsx.macro",
+		"body": [
+			"{removeNextJSX()}"
+		],
+		"description": "remove-next-jsx.macro"
+	},
+}
