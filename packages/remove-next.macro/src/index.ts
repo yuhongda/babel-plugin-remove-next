@@ -22,28 +22,30 @@ export default createMacro(
 							true
 						);
 					}
-          expression.remove();
+					expression.remove();
 				}
 			});
 		}
 
-    if(references.removeNextJSX) {
-      references.removeNextJSX.forEach((path) => {
+		if (references.removeNextJSX) {
+			references.removeNextJSX.forEach((path) => {
 				const expression = path.findParent((p) => p.isCallExpression());
-        if(expression) {
-          const empty = babel.types.jsxEmptyExpression();
-          babel.types.addComment(
-            empty,
-            "inner",
-            "babel-plugin-remove-next",
-            false
-          );
-          expression.replaceWith(empty);
-        }
-      });
-    }
+				if (expression) {
+					const empty = babel.types.jsxEmptyExpression();
+					babel.types.addComment(
+						empty,
+						"inner",
+						"babel-plugin-remove-next",
+						false
+					);
+					expression.replaceWith(empty);
+				}
+			});
+		}
 
-		traverse(program.parent, babelPluginRemoveNext().visitor, undefined, {});
+		if (process.env.NODE_ENV === "production" || process.env.NODE_ENV === "test") {
+			traverse(program.parent, babelPluginRemoveNext().visitor, undefined, {});
+		}
 	},
 	{
 		configName: "removeNext",

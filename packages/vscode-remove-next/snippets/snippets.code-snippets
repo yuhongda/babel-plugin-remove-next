@@ -23,7 +23,7 @@
   "Remove Next(macro) JSX": {
 		"prefix": "remove-next-jsx.macro",
 		"body": [
-			"{removeNext()}"
+			"{removeNextJSX()}"
 		],
 		"description": "remove-next-jsx.macro"
 	},
