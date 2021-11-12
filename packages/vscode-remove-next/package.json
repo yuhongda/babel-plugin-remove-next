@@ -1,5 +1,6 @@
 {
   "name": "vscode-remove-next",
+  "publisher": "yuhongda",
   "displayName": "vscode-remove-next",
   "description": "vscode extension for babel-plugin-remove-next",
   "version": "0.0.1",

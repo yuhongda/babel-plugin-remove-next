@@ -4,4 +4,5 @@ This extension is made for `babel-plugin-remove-next` and `remove-next.macro`. I
 
 ## Features
 
-![screenshot](https://user-images.githubusercontent.com/259410/141441491-a6c45c42-c9d2-43eb-a0b6-40e304b56803.gif)
+![screenshot](https://user-images.githubusercontent.com/259410/141444664-230862bf-1dea-48f9-bd46-302f727d456f.gif)
+
