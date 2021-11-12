@@ -49,7 +49,10 @@ var _default = function _default() {
             JSXExpressionContainer: {
               enter: function enter(path) {
                 if ((0, _utils.isMock)(path.node)) {
-                  path.getNextSibling().remove();
+                  var nextPath = path.getAllNextSiblings().find(function (p) {
+                    return p && !p.isJSXText();
+                  });
+                  nextPath && nextPath.remove();
                   path.remove();
                 }
               }

@@ -27,6 +27,22 @@ export default createMacro(
 			});
 		}
 
+    if(references.removeNextJSX) {
+      references.removeNextJSX.forEach((path) => {
+				const expression = path.findParent((p) => p.isCallExpression());
+        if(expression) {
+          const empty = babel.types.jsxEmptyExpression();
+          babel.types.addComment(
+            empty,
+            "inner",
+            "babel-plugin-remove-next",
+            false
+          );
+          expression.replaceWith(empty);
+        }
+      });
+    }
+
 		traverse(program.parent, babelPluginRemoveNext().visitor, undefined, {});
 	},
 	{
@@ -35,3 +51,4 @@ export default createMacro(
 );
 
 export declare function removeNext(): void;
+export declare function removeNextJSX(): void;

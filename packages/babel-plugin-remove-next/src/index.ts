@@ -43,7 +43,8 @@ export default () => ({
 					JSXExpressionContainer: {
 						enter(path) {
 							if (isMock(path.node)) {
-								path.getNextSibling().remove();
+                const nextPath = path.getAllNextSiblings().find(p => p && !p.isJSXText());
+								nextPath && nextPath.remove();
 								path.remove();
 							}
 						},

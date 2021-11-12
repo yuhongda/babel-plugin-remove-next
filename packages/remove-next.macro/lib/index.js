@@ -41,6 +41,20 @@ var _default = (0, _babelPluginMacros.createMacro)(function (_ref) {
     });
   }
 
+  if (references.removeNextJSX) {
+    references.removeNextJSX.forEach(function (path) {
+      var expression = path.findParent(function (p) {
+        return p.isCallExpression();
+      });
+
+      if (expression) {
+        var empty = babel.types.jsxEmptyExpression();
+        babel.types.addComment(empty, "inner", "babel-plugin-remove-next", false);
+        expression.replaceWith(empty);
+      }
+    });
+  }
+
   (0, _traverse["default"])(program.parent, (0, _babelPluginRemoveNext["default"])().visitor, undefined, {});
 }, {
   configName: "removeNext"
